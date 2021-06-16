@@ -7,16 +7,27 @@ const { extendDefaultPlugins } = require("svgo");
 
 module.exports = {
   entry: {
-    main: "./src/js/main.js",
-    index: "./src/js/index.js",
-    about: "./src/js/about.js",
+    main: {
+      import: "./src/js/main.js",
+      filename: "js/main.[contenthash].js",
+    },
+    index: {
+      import: "./src/js/index.js",
+      filename: "js/index.[contenthash].js",
+      dependOn: "main",
+    },
+    about: {
+      import: "./src/js/about.js",
+      filename: "js/about.[contenthash].js",
+      dependOn: "main",
+    },
   },
 
   // mode: "development",
 
   output: {
     path: `${__dirname}/dist`,
-    filename: "[name].[contenthash].js",
+    assetModuleFilename: 'img/[hash][ext][query]',
     clean: true,
   },
 
@@ -34,8 +45,7 @@ module.exports = {
       filename: "about.html",
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].[contenthash].css",
+      filename: "css/[name].[contenthash].css",
     }),
     new ImageMinimizerPlugin({
       minimizerOptions: {
