@@ -27,7 +27,7 @@ module.exports = {
 
   output: {
     path: `${__dirname}/dist`,
-    assetModuleFilename: 'img/[hash][ext][query]',
+    assetModuleFilename: "img/[hash][ext][query]",
     clean: true,
   },
 
@@ -86,6 +86,14 @@ module.exports = {
       {
         test: /.s?css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env"],
+        },
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
