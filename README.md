@@ -8,7 +8,13 @@ NPM: `npm install`
 
 Yarn: `yarn install`
 
-## Build
+## Run development server
+
+NPM: `npm start`
+
+Yarn: `yarn start`
+
+## Build production
 
 NPM: `npm run build`
 

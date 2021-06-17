@@ -6,9 +6,7 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const { extendDefaultPlugins } = require("svgo");
 
 module.exports = {
-  // mode: "production",
-  // devtool: "source-map",
-
+  // https://webpack.js.org/concepts/entry-points/
   entry: {
     main: {
       import: "./src/js/main.js",
@@ -26,12 +24,14 @@ module.exports = {
     },
   },
 
+  // https://webpack.js.org/concepts/output/
   output: {
     path: `${__dirname}/dist`,
     assetModuleFilename: "img/[hash][ext]",
     clean: true,
   },
 
+  // https://webpack.js.org/concepts/plugins/
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
@@ -78,6 +78,7 @@ module.exports = {
     }),
   ],
 
+  // https://webpack.js.org/concepts/modules/
   module: {
     rules: [
       {
@@ -103,6 +104,7 @@ module.exports = {
     ],
   },
 
+  // https://webpack.js.org/configuration/optimization/
   optimization: {
     minimize: true,
     minimizer: [
