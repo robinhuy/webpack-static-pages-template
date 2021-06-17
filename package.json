@@ -1,12 +1,12 @@
 {
-  "name": "demo-webpack",
+  "name": "webpack-static-pages-template",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
     "build": "webpack"
   },
-  "author": "",
+  "author": "Robin Huy",
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.6.0"

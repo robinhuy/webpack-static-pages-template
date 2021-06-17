@@ -6,6 +6,9 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const { extendDefaultPlugins } = require("svgo");
 
 module.exports = {
+  // mode: "production",
+  // devtool: "source-map",
+
   entry: {
     main: {
       import: "./src/js/main.js",
@@ -23,11 +26,9 @@ module.exports = {
     },
   },
 
-  // mode: "development",
-
   output: {
     path: `${__dirname}/dist`,
-    assetModuleFilename: "img/[hash][ext][query]",
+    assetModuleFilename: "img/[hash][ext]",
     clean: true,
   },
 
@@ -104,6 +105,11 @@ module.exports = {
 
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      }),
+      new CssMinimizerPlugin(),
+    ],
   },
 };
