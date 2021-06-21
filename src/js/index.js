@@ -1,7 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "../css/index.css";
 
-import slick from "slick-carousel";
+import "slick-carousel";
 
 $(".carousel").slick({
   prevArrow:

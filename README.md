@@ -1,6 +1,16 @@
 # Webpack Static Pages Template
 
-Optimized static websites with webpack 5: Bundle, minify & cache static files.
+Optimized static websites development with webpack 5
+
+## Template feature
+
+Run development server in localhost with Hot reload.
+
+Build code for production:
+  - Bundle code (multiple pages).
+  - Minify HTML + CSS, Minify + Obfuscate Javascript.
+  - Rename CSS + JS file by hash content to Cache Busting.
+  - Compress images.
 
 ## Install
 
