@@ -1,9 +1,10 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+const ImageMinimizerWebpackPlugin = require("image-minimizer-webpack-plugin");
 const { extendDefaultPlugins } = require("svgo");
+const { ProvidePlugin } = require("webpack");
 
 module.exports = {
   // https://webpack.js.org/concepts/entry-points/
@@ -33,22 +34,27 @@ module.exports = {
 
   // https://webpack.js.org/concepts/plugins/
   plugins: [
+    // https://webpack.js.org/plugins/html-webpack-plugin/
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      inject: true,
+      inject: "body",
       chunks: ["main", "index"],
       filename: "index.html",
     }),
     new HtmlWebpackPlugin({
       template: "./src/about.html",
-      inject: true,
+      inject: "body",
       chunks: ["main", "about"],
       filename: "about.html",
     }),
+
+    // https://webpack.js.org/plugins/mini-css-extract-plugin/
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash].css",
     }),
-    new ImageMinimizerPlugin({
+
+    // https://webpack.js.org/plugins/image-minimizer-webpack-plugin/
+    new ImageMinimizerWebpackPlugin({
       minimizerOptions: {
         // Lossless optimization with custom option
         plugins: [
@@ -75,6 +81,12 @@ module.exports = {
           ],
         ],
       },
+    }),
+
+    // https://webpack.js.org/plugins/provide-plugin/
+    new ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
     }),
   ],
 
@@ -106,12 +118,17 @@ module.exports = {
 
   // https://webpack.js.org/configuration/optimization/
   optimization: {
-    minimize: true,
+    // https://webpack.js.org/guides/tree-shaking/
+    usedExports: true,
+
     minimizer: [
-      new TerserPlugin({
+      // https://webpack.js.org/plugins/terser-webpack-plugin/
+      new TerserWebpackPlugin({
         extractComments: false,
       }),
-      new CssMinimizerPlugin(),
+
+      // https://webpack.js.org/plugins/css-minimizer-webpack-plugin/
+      new CssMinimizerWebpackPlugin(),
     ],
   },
 };

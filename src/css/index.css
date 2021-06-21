@@ -1,0 +1,48 @@
+.arrow-slick {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  background-color: black;
+  opacity: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  z-index: 200;
+  transition: all 0.4s;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel:hover .arrow-slick {
+  opacity: 0.5;
+}
+
+.arrow-slick:hover {
+  background-color: #e65540;
+}
+
+.next-slick {
+  right: 50px;
+  left: auto;
+}
+
+.prev-slick {
+  left: 50px;
+  right: auto;
+}
+
+@media (max-width: 576px) {
+  .next-slick {
+    right: 15px;
+  }
+
+  .prev-slick {
+    left: 15px;
+  }
+}

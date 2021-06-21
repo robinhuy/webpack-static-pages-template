@@ -1,16 +1,11 @@
-require("../css/style.css");
+import "slick-carousel/slick/slick.css";
+import "../css/index.css";
 
-console.log("app.js");
+import slick from "slick-carousel";
 
-function component() {
-  const element = document.createElement("div");
-
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = "Hello World";
-
-  return element;
-}
-
-document.body.appendChild(component());
-
-console.log("end app.js");
+$(".carousel").slick({
+  prevArrow:
+    '<button class="arrow-slick prev-slick"><i class="fa  fa-angle-left" aria-hidden="true"></i></button>',
+  nextArrow:
+    '<button class="arrow-slick next-slick"><i class="fa  fa-angle-right" aria-hidden="true"></i></button>',
+});
