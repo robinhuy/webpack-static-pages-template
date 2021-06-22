@@ -1,6 +1,6 @@
 # Webpack Static Pages Template
 
-Optimized static websites development with webpack 5
+Optimizing static website with webpack 5
 
 ## Template feature
 
