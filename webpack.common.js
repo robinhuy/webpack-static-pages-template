@@ -5,6 +5,7 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ImageMinimizerWebpackPlugin = require("image-minimizer-webpack-plugin");
 const { extendDefaultPlugins } = require("svgo");
 const { ProvidePlugin } = require("webpack");
+const json5 = require("json5");
 
 module.exports = {
   // https://webpack.js.org/concepts/entry-points/
@@ -112,6 +113,17 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.json5$/i,
+        type: "json",
+        parser: {
+          parse: json5.parse,
+        },
       },
     ],
   },

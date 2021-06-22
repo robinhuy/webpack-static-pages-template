@@ -26,6 +26,7 @@
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^9.0.0",
+    "json5": "^2.2.0",
     "mini-css-extract-plugin": "^1.6.0",
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
