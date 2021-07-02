@@ -29,7 +29,6 @@ module.exports = {
   // https://webpack.js.org/concepts/output/
   output: {
     path: `${__dirname}/dist`,
-    assetModuleFilename: "img/[hash][ext]",
     clean: true,
   },
 
@@ -113,10 +112,18 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "img/[hash][ext]",
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
+        },
+        use: {
+          loader: "url-loader", // Use url-loader when change generator filename
+        },
       },
       {
         test: /\.json5$/i,
