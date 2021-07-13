@@ -1,7 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
-const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ImageMinimizerWebpackPlugin = require("image-minimizer-webpack-plugin");
 const { extendDefaultPlugins } = require("svgo");
 const { ProvidePlugin } = require("webpack");
@@ -132,22 +130,6 @@ module.exports = {
           parse: json5.parse,
         },
       },
-    ],
-  },
-
-  // https://webpack.js.org/configuration/optimization/
-  optimization: {
-    // https://webpack.js.org/guides/tree-shaking/
-    usedExports: true,
-
-    minimizer: [
-      // https://webpack.js.org/plugins/terser-webpack-plugin/
-      new TerserWebpackPlugin({
-        extractComments: false,
-      }),
-
-      // https://webpack.js.org/plugins/css-minimizer-webpack-plugin/
-      new CssMinimizerWebpackPlugin(),
     ],
   },
 };
