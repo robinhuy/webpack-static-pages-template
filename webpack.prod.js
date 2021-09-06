@@ -1,5 +1,6 @@
+const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
-const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 
@@ -12,13 +13,16 @@ module.exports = merge(common, {
     usedExports: true,
 
     minimizer: [
+      // https://webpack.js.org/plugins/html-minimizer-webpack-plugin/
+      new HtmlMinimizerPlugin(),
+
+      // https://webpack.js.org/plugins/css-minimizer-webpack-plugin/
+      new CssMinimizerPlugin(),
+
       // https://webpack.js.org/plugins/terser-webpack-plugin/
       new TerserWebpackPlugin({
         extractComments: false,
       }),
-
-      // https://webpack.js.org/plugins/css-minimizer-webpack-plugin/
-      new CssMinimizerWebpackPlugin(),
     ],
   },
 });
