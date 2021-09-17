@@ -27,6 +27,7 @@ module.exports = {
   // https://webpack.js.org/concepts/output/
   output: {
     path: `${__dirname}/dist`,
+    publicPath: "/",
     clean: true,
   },
 
