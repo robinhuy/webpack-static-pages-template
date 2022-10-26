@@ -43,4 +43,8 @@ Default project structure:
 
 ![Project Structure](https://user-images.githubusercontent.com/12640832/193526592-3554dfd5-414b-4327-afa2-c9c7a6162b00.png)
 
+---
+
+Vietnamese tutorial: [Tối ưu static page với Webpack](https://huydq.dev/blog/toi-uu-static-page-voi-webpack/)
+
 
